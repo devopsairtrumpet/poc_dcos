@@ -21,7 +21,7 @@ public class HelloController {
     public ResponseEntity<HelloWorld> sayHello(@PathVariable("requester") String requester){
         HelloWorld helloWorld = new HelloWorld();
         helloWorld.setName(requester);
-        helloWorld.setMessage("Hello");
+        helloWorld.setMessage("Hello Requester");
         return new ResponseEntity<HelloWorld>(helloWorld , HttpStatus.OK);
     }
 }
