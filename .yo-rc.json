@@ -1,0 +1,6 @@
+{
+  "generator-spring": {
+    "packageName": "in.aayush.poc.dcos",
+    "packageFolder": "in/aayush/poc/dcos"
+  }
+}
