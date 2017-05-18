@@ -4,7 +4,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "aayushjain/playground:v0.2",
+      "image": "aayushjain/playground:latest",
       "network": "BRIDGE",
       "portMappings": [
         {
