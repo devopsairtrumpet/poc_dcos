@@ -20,7 +20,7 @@
     }
   },
   "cpus": 1,
-  "mem": 512,
+  "mem": 1024,
   "labels": {
     "HAPROXY_GROUP": "external",
     "HAPROXY_0_VHOST": "api.airtrumpet.cloud"
