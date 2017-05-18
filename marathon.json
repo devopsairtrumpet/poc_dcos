@@ -1,0 +1,28 @@
+{
+  "id": "/hello-dcos",
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "aayushjain/playground:v0.2",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/hello-dcos:8080"
+          },
+          "protocol": "tcp",
+          "name": "hellodcos"
+        }
+      ]
+    }
+  },
+  "cpus": 1,
+  "mem": 512,
+  "labels": {
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "api.airtrumpet.cloud"
+  }
+}
