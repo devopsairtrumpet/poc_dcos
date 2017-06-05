@@ -1,9 +1,8 @@
 pipeline {
+  def app
   agent any
   stages {
-
-    def app
-
+  
     stage('Build') {
       steps {
         sh './gradlew clean build'
