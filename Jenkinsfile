@@ -15,11 +15,14 @@ pipeline {
                       app.push("${commit}")
                       app.push("latest")
 
-                      def marathonFile = new File("marathon.json")
-                      marathonFile.replaceAll('version_tag' , '${commit}')
                   }
 
+
         }
+        sh 'git rev-parse HEAD > commit'
+        def commit = readFile('commit').trim()
+        def marathonFile = new File("marathon.json")
+        marathonFile.replaceAll('version_tag' , '${commit}')
       }
     }
 
