@@ -24,4 +24,5 @@ public class HelloController {
         helloWorld.setMessage("Hello Requester");
         return new ResponseEntity<HelloWorld>(helloWorld , HttpStatus.OK);
     }
+
 }
