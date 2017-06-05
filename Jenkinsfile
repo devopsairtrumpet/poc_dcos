@@ -21,10 +21,10 @@ pipeline {
         }
         script{
             sh 'git rev-parse HEAD > commit'
-            def commit = readFile('commit').trim()
-            def marathonFile = readFile("marathon.json")
-            def marathonFileReplacedText = marathonFile.replaceAll('version_tag' , ${commit})
-            writeFile('marathon.json' , ${marathonFileReplacedText})
+            //def commit = readFile('commit').trim()
+            //def marathonFile = readFile("marathon.json")
+            //def marathonFileReplacedText =
+            writeFile('marathon.json' , readFile("marathon.json").replaceAll('version_tag' , readFile('commit').trim()))
         }
       }
     }
