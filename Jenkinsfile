@@ -6,6 +6,7 @@ pipeline {
     stage('Build') {
       steps {
         sh './gradlew clean build'
+        // change the docker credential when moving to a new Jenkins instance
         script {
         docker.withRegistry('https://registry.hub.docker.com', '1b897fc4-3a7c-419d-b0c8-9695c9d96590') {
                       def app = docker.build("aayushjain/playground")
@@ -22,7 +23,7 @@ pipeline {
     stage('Marathon Deploy'){
         steps{
             script{
-              sh 'COMMIT_HASH = git rev-parse HEAD'
+              sh 'set COMMIT_HASH = git rev-parse HEAD'
               echo "Updating marathon json file with Git commit ${COMMIT_HASH}"
               sh 'sed -i -e "s/version_tag/${COMMIT_HASH}/g" marathon.json'
               echo "Updated file here"
