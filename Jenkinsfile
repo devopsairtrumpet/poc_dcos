@@ -9,8 +9,7 @@ pipeline {
 
     stage('DockerPublish'){
         steps{
-            def poc_dcos = docker.build "aayushjain/playground:${env.GIT_COMMIT}"
-            poc_dcos.push()
+            docker.build("aayushjain/playground:${env.GIT_COMMIT}").push()
         }
 
     }
