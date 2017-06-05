@@ -22,7 +22,8 @@ pipeline {
         script{
             sh 'git rev-parse HEAD > commit'
             def marathonFileReplacedText = readFile("marathon.json").replaceAll('version_tag' , readFile('commit').trim())
-            writeFile("marathon.json" , "${marathonFileReplacedText}")
+            def fileName = "marathon.json"
+            writeFile("${fileName}" , "${marathonFileReplacedText}")
         }
       }
     }
