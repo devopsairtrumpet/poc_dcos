@@ -13,19 +13,21 @@ pipeline {
                       def commit = readFile('commit').trim()
                       app.push("${commit}")
                       app.push("latest")
-                      echo "Updating marathon json file with Git commit ${commit}"
-                      sh "sed -i -e "s/version_tag/${commit}/g" marathon.json"
-                      echo "Updated file here"
-                      sh 'cat marathon.json'
                   }
 
         }
       }
     }
 
-
     stage('Marathon Deploy'){
         steps{
+            script{
+              sh 'COMMIT_HASH = git rev-parse HEAD'
+              echo "Updating marathon json file with Git commit ${COMMIT_HASH}"
+              sh 'sed -i -e "s/version_tag/${COMMIT_HASH}/g" marathon.json'
+              echo "Updated file here"
+              sh 'cat marathon.json'
+            }
             marathon appid: '', credentialsId: '', docker: '', forceUpdate: true, url: 'http://marathon.mesos:8080'
         }
 
