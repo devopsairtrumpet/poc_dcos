@@ -8,8 +8,11 @@ pipeline {
     }
 
     stage('DockerPublish'){
-        def poc_dcos = docker.build "aayushjain/playground:${env.GIT_COMMIT}"
-        poc_dcos.push()
+        steps{
+            def poc_dcos = docker.build "aayushjain/playground:${env.GIT_COMMIT}"
+            poc_dcos.push()
+        }
+
     }
   }
 }
