@@ -14,7 +14,7 @@ pipeline {
                       app.push("${commit}")
                       app.push("latest")
                       echo "Updating marathon json file with Git commit ${commit}"
-                      sh 'sed -i -e 's/version_tag/${commit}/g' marathon.json'
+                      sh "sed -i -e "s/version_tag/${commit}/g" marathon.json"
                       echo "Updated file here"
                       sh 'cat marathon.json'
                   }
