@@ -1,20 +1,23 @@
 pipeline {
   agent any
   stages {
+
+    def app
+
     stage('Build') {
       steps {
         sh './gradlew clean build'
       }
     }
 
-  stage('Build image') {
+    stage('Build image') {
           /* This builds the actual image; synonymous to
            * docker build on the command line */
 
           app = docker.build("aayushjain/playground")
       }
 
-      stage('Push image') {
+    stage('Push image') {
           /* Finally, we'll push the image with two tags:
            * First, the incremental build number from Jenkins
            * Second, the 'latest' tag.
