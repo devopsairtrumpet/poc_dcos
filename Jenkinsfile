@@ -23,7 +23,7 @@ pipeline {
     stage('Marathon Deploy'){
         steps{
             script{
-              sh 'COMMIT_HASH='git rev-parse HEAD''
+              sh 'COMMIT_HASH="git rev-parse HEAD"'
               echo "Updating marathon json file with Git commit ${COMMIT_HASH}"
               sh 'sed -i -e "s/version_tag/${COMMIT_HASH}/g" marathon.json'
               echo "Updated file here"
